@@ -9,6 +9,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    environment: moemail
     steps:
       - uses: actions/checkout@v4
         with:
