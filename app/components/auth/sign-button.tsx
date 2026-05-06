@@ -8,6 +8,7 @@ import { useRouter } from 'next/navigation'
 import { useTranslations, useLocale } from "next-intl"
 import Link from "next/link"
 import { cn } from "@/lib/utils"
+import { useConfig } from "@/hooks/use-config"
 
 interface SignButtonProps {
   size?: "default" | "lg"
@@ -18,7 +19,11 @@ export function SignButton({ size = "default" }: SignButtonProps) {
   const locale = useLocale()
   const { data: session, status } = useSession()
   const t = useTranslations("auth.signButton")
+  const { config } = useConfig()
   const loading = status === "loading"
+
+  const registerEnabled = config?.registerEnabled !== false
+  const buttonText = registerEnabled ? t("login") : t("loginOnly")
 
   if (loading) {
     return <div className="h-9" />
@@ -28,7 +33,7 @@ export function SignButton({ size = "default" }: SignButtonProps) {
     return (
       <Button onClick={() => router.push(`/${locale}/login`)} className={cn("gap-2", size === "lg" ? "px-8" : "")} size={size}>
         <LogIn className={size === "lg" ? "w-5 h-5" : "w-4 h-4"} />
-        {t("login")}
+        {buttonText}
       </Button>
     )
   }

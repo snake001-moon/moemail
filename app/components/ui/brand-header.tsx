@@ -29,56 +29,31 @@ export function BrandHeader({
           className="flex items-center gap-3 hover:opacity-80 transition-opacity group"
         >
           <div className="relative w-12 h-12">
-            <div className="absolute inset-0 grid grid-cols-8 grid-rows-8 gap-px">
-              <svg
-                width="48"
-                height="48"
-                viewBox="0 0 32 32"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                className="text-primary group-hover:scale-105 transition-transform duration-200"
-              >
-                {/* 信封主体 */}
-                <path
-                  d="M4 8h24v16H4V8z"
-                  className="fill-primary/20"
-                />
-
-                {/* 信封边框 */}
-                <path
-                  d="M4 8h24v2H4V8zM4 22h24v2H4v-2z"
-                  className="fill-primary"
-                />
-
-                {/* @ 符号 */}
-                <path
-                  d="M14 12h4v4h-4v-4zM12 14h2v4h-2v-4zM18 14h2v4h-2v-4zM14 18h4v2h-4v-2z"
-                  className="fill-primary"
-                />
-
-                {/* 折线装饰 */}
-                <path
-                  d="M4 8l12 8 12-8"
-                  className="stroke-primary stroke-2"
-                  fill="none"
-                />
-
-                {/* 装饰点 */}
-                <path
-                  d="M8 18h2v2H8v-2zM22 18h2v2h-2v-2z"
-                  className="fill-primary/60"
-                />
-
-                {/* 底部装饰线 */}
-                <path
-                  d="M8 14h2v2H8v-2zM22 14h2v2h-2v-2z"
-                  className="fill-primary/40"
-                />
-              </svg>
-            </div>
+            <svg
+              width="48"
+              height="48"
+              viewBox="0 0 32 32"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="text-primary group-hover:scale-105 transition-transform duration-200"
+            >
+              <path d="M4 18C4 18 5 10 8 8C9 7 10 8 10 10L10 14" className="fill-primary" />
+              <path d="M28 18C28 18 27 10 24 8C23 7 22 8 22 10L22 14" className="fill-primary" />
+              <ellipse cx="16" cy="20" rx="11" ry="9" className="fill-primary" />
+              <ellipse cx="11" cy="17" rx="2.5" ry="3" className="fill-white" />
+              <ellipse cx="21" cy="17" rx="2.5" ry="3" className="fill-white" />
+              <ellipse cx="11" cy="17" rx="1.2" ry="1.8" className="fill-primary" />
+              <ellipse cx="21" cy="17" rx="1.2" ry="1.8" className="fill-primary" />
+              <ellipse cx="16" cy="22" rx="1.5" ry="1" className="fill-primary/30" />
+              <path d="M14 23L16 24L18 23" className="stroke-primary/50 stroke-1.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+              <line x1="5" y1="19" x2="9" y2="20" className="stroke-primary/40 stroke-1" strokeLinecap="round" />
+              <line x1="5" y1="22" x2="9" y2="22" className="stroke-primary/40 stroke-1" strokeLinecap="round" />
+              <line x1="27" y1="19" x2="23" y2="20" className="stroke-primary/40 stroke-1" strokeLinecap="round" />
+              <line x1="27" y1="22" x2="23" y2="22" className="stroke-primary/40 stroke-1" strokeLinecap="round" />
+            </svg>
           </div>
-          <span className="text-3xl font-bold tracking-wider bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-600">
-            MoeMail
+          <span className="text-3xl font-bold tracking-wider bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-500">
+            CatMail
           </span>
         </Link>
       </div>

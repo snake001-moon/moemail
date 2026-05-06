@@ -2,11 +2,21 @@ import { NextResponse } from "next/server"
 import { register } from "@/lib/auth"
 import { authSchema, AuthSchema } from "@/lib/validation"
 import { verifyTurnstileToken } from "@/lib/turnstile"
+import { getRequestContext } from "@cloudflare/next-on-pages"
 
 export const runtime = "edge"
 
 export async function POST(request: Request) {
   try {
+    const env = getRequestContext().env
+    const registerEnabled = await env.SITE_CONFIG.get("REGISTER_ENABLED")
+    if (registerEnabled === "false") {
+      return NextResponse.json(
+        { error: "注册功能已关闭" },
+        { status: 403 }
+      )
+    }
+
     const json = await request.json() as AuthSchema
     
     try {

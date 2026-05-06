@@ -26,6 +26,7 @@ export function WebsiteConfigPanel() {
   const [emailDomains, setEmailDomains] = useState<string>("")
   const [adminContact, setAdminContact] = useState<string>("")
   const [maxEmails, setMaxEmails] = useState<string>(EMAIL_CONFIG.MAX_ACTIVE_EMAILS.toString())
+  const [registerEnabled, setRegisterEnabled] = useState(true)
   const [turnstileEnabled, setTurnstileEnabled] = useState(false)
   const [turnstileSiteKey, setTurnstileSiteKey] = useState("")
   const [turnstileSecretKey, setTurnstileSecretKey] = useState("")
@@ -46,6 +47,7 @@ export function WebsiteConfigPanel() {
         emailDomains: string,
         adminContact: string,
         maxEmails: string,
+        registerEnabled?: boolean,
         turnstile?: {
           enabled: boolean,
           siteKey: string,
@@ -56,6 +58,7 @@ export function WebsiteConfigPanel() {
       setEmailDomains(data.emailDomains)
       setAdminContact(data.adminContact)
       setMaxEmails(data.maxEmails || EMAIL_CONFIG.MAX_ACTIVE_EMAILS.toString())
+      setRegisterEnabled(data.registerEnabled !== false)
       setTurnstileEnabled(Boolean(data.turnstile?.enabled))
       setTurnstileSiteKey(data.turnstile?.siteKey ?? "")
       setTurnstileSecretKey(data.turnstile?.secretKey ?? "")
@@ -73,6 +76,7 @@ export function WebsiteConfigPanel() {
           emailDomains,
           adminContact,
           maxEmails: maxEmails || EMAIL_CONFIG.MAX_ACTIVE_EMAILS.toString(),
+          registerEnabled,
           turnstile: {
             enabled: turnstileEnabled,
             siteKey: turnstileSiteKey,
@@ -154,6 +158,22 @@ export function WebsiteConfigPanel() {
               placeholder={`${EMAIL_CONFIG.MAX_ACTIVE_EMAILS}`}
             />
           </div>
+        </div>
+
+        <div className="flex items-center justify-between rounded-lg border border-dashed border-primary/40 p-4">
+          <div className="space-y-1">
+            <Label htmlFor="register-enabled" className="text-sm font-medium">
+              {t("register.enable")}
+            </Label>
+            <p className="text-xs text-muted-foreground">
+              {t("register.enableDescription")}
+            </p>
+          </div>
+          <Switch
+            id="register-enabled"
+            checked={registerEnabled}
+            onCheckedChange={setRegisterEnabled}
+          />
         </div>
 
         <div className="space-y-4 rounded-lg border border-dashed border-primary/40 p-4">
