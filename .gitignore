@@ -9,9 +9,11 @@
 !.yarn/plugins
 !.yarn/releases
 !.yarn/versions
+.articles
 
 # testing
-/coverage
+.arts/*
+.codeartsdoer/*
 
 # next.js
 /.next/
