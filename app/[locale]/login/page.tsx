@@ -3,7 +3,6 @@ import { auth } from "@/lib/auth"
 import { redirect } from "next/navigation"
 import type { Locale } from "@/i18n/config"
 import { getTurnstileConfig } from "@/lib/turnstile"
-import { getRequestContext } from "@cloudflare/next-on-pages"
 
 export const runtime = "edge"
 
@@ -17,12 +16,6 @@ export default async function LoginPage({
   const session = await auth()
   
   if (session?.user) {
-    redirect(`/${locale}`)
-  }
-
-  const env = getRequestContext().env
-  const registerEnabled = await env.SITE_CONFIG.get("REGISTER_ENABLED")
-  if (registerEnabled === "false") {
     redirect(`/${locale}`)
   }
 
